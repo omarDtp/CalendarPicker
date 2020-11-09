@@ -601,7 +601,10 @@ export default class CalendarPicker extends Component {
                 />
               : this.renderMonth({
                   ...renderMonthParams,
+                  allDayContainerStyle: this.props.allDayContainerStyle,
                   daysWrapper: this.props.daysWrapper,
+                  allDayWrapperStyle: this.props.allDayWrapperStyle,
+                  allDayTextStyle: this.props.allDayTextStyle,
                 })}
           </View>
         );

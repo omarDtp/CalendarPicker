@@ -139,7 +139,16 @@ export default class DaysGridView extends Component {
     return {
       day,
       month: this.props.month,
-      component: <Day key={day} day={day} {...this.props} />,
+      component: (
+        <Day
+          allDayWrapperStyle={this.props.allDayWrapperStyle}
+          allDayTextStyle={this.props.allDayTextStyle}
+          allDayContainerStyle={this.props.allDayContainerStyle}
+          key={day}
+          day={day}
+          {...this.props}
+        />
+      ),
     };
   }
 
@@ -155,6 +164,9 @@ export default class DaysGridView extends Component {
       // month doesn't matter for stragglers as long as isn't set to current month
       component: (
         <Day
+          allDayContainerStyle={this.props.allDayContainerStyle}
+          allDayWrapperStyle={this.props.allDayWrapperStyle}
+          allDayTextStyle={this.props.allDayTextStyle}
           key={key}
           day={day}
           styles={this.props.styles}
@@ -226,7 +238,7 @@ export default class DaysGridView extends Component {
   };
 
   render() {
-    const { styles, daysWrapper } = this.props;
+    const { styles } = this.props;
     const { daysGrid } = this.state;
     const renderedDaysGrid = daysGrid.map((weekRow, i) =>
       <View key={i} style={styles.weekRow}>
@@ -234,7 +246,7 @@ export default class DaysGridView extends Component {
       </View>
     );
     return (
-      <View style={[styles.daysWrapper, daysWrapper]}>
+      <View style={[styles.daysWrapper, this.props.daysWrapper]}>
         {renderedDaysGrid}
       </View>
     );
